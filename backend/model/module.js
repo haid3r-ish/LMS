@@ -1,6 +1,4 @@
-// models/Module.js
 const mongoose = require('mongoose');
-
 const options = { discriminatorKey: 'type', _id: true };
 
 // content type schema
@@ -14,6 +12,7 @@ const moduleSchema = new mongoose.Schema({
   instructor: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   // provide content type 
   content: [unitSchema], 
+  certificateUrl: { type: String },
   price: Number
 }, { timestamps: true });
 
@@ -21,13 +20,13 @@ const Module = mongoose.model('Module', moduleSchema);
 
 
 // video discriminator
-Module.path('content').discriminator('video', new mongoose.Schema({
+moduleSchema.path('content').discriminator('video', new mongoose.Schema({
     videoUrl: { type: String, required: true },
     duration: { type: Number, required: true }
 }));
 
 // quiz discriminator
-Module.path('content').discriminator('quiz', new mongoose.Schema({
+moduleSchema.path('content').discriminator('quiz', new mongoose.Schema({
     timeLimit: { type: Number, required: true }, 
     questions: [{
         questionText: String,
@@ -38,7 +37,7 @@ Module.path('content').discriminator('quiz', new mongoose.Schema({
 }));
 
 // assignment discriminator
-Module.path('content').discriminator('assignment', new mongoose.Schema({
+moduleSchema.path('content').discriminator('assignment', new mongoose.Schema({
   instructionPdfUrl: { type: String, required: true }, 
   maxScore: { type: Number, default: 100 }
 }));

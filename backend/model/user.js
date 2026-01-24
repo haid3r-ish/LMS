@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     trim: true
   },
   password: {
-    type: String, // Will store the hashed password
+    type: String,
     required: true
   },
   role: {
@@ -22,11 +22,6 @@ const userSchema = new mongoose.Schema({
     enum: ['student', 'instructor', 'admin'],
     default: 'student'
   },
-  avatar: {
-    type: String, // URL to profile picture
-    default: 'https://via.placeholder.com/150'
-  },
-  // For instructors only
   bio: String,
   expertise: [String] 
 }, { timestamps: true });
