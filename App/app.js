@@ -16,7 +16,7 @@ const app = express();
 
 // 1. Middleware
 app.use(helmet());app.use(cors({
-  origin: 'http://localhost:5173', 
+  origin: 'https://animated-bonbon-d8592f.netlify.app/', 
   credentials: true                
 }));
 app.use(morgan("dev"))
