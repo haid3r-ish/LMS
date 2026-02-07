@@ -10,7 +10,7 @@
     "@controller": "./Controller",
     "@middleware": "./Middleware",
     "@route": "./Route",
-    "@app": "./app",
+    "@app": "./App",
     "@config": "./Config"
   },
   "scripts": {
